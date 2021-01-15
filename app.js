@@ -10,12 +10,19 @@ var algo = "aes256";
 const jwt = require('jsonwebtoken');
 var jwtkey = 'jwt';
 
-mongoose.connect('mongodb+srv://admin:NxZCUQCi1iG6wRTn@cluster0.xgemq.mongodb.net/testapi?retryWrites=true&w=majority',
+mongoose.connect(CLOUD_MONGODB_URI,
     {
         UseNewUrlParser: true,
         useUnifiedTopology: true
     }
-);
+).then(
+    (db) => {
+      console.log(`Server correctly connected with mongodb`);
+    },
+    (err) => {
+      console.log("Error occured while connecting with mongodb ", err);
+    }
+  );
 
 app.post('/signup', jsonParser, function (req, res) {
     var cipher = crypto.createCipheriv(algo, key);
@@ -81,4 +88,4 @@ app.get('/users', verifyToken, function (req, res) {
     })
 })
 
-app.listen(8000);
+app.listen(4000);
