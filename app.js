@@ -5,9 +5,12 @@ const bdParser = require('body-parser');
 var jsonParser = bdParser.json();
 const Foods = require('./model/food');
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 CLOUD_MONGODB_URI = process.env.CLOUD_MONGODB_URI,
 
-    mongoose.connect('mongodb+srv://admin:NxZCUQCi1iG6wRTn@cluster0.xgemq.mongodb.net/testapi?retryWrites=true&w=majority',
+    mongoose.connect(CLOUD_MONGODB_URI,
         {
             UseNewUrlParser: true,
             useUnifiedTopology: true
