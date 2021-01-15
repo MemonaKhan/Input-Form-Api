@@ -4,7 +4,7 @@
   "description": "Using Nodejs Express js and MongoDB",
   "main": "index.js",
   "scripts": {
-    "server": "app.js",
+    "server": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
